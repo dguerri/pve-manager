@@ -7,6 +7,7 @@ use PVE::JSONSchema qw(get_standard_option);
 use PVE::RESTHandler;
 
 use PVE::API2::Hardware::PCI;
+use PVE::API2::Hardware::Sensors;
 use PVE::API2::Hardware::USB;
 
 use base qw(PVE::RESTHandler);
@@ -14,6 +15,11 @@ use base qw(PVE::RESTHandler);
 __PACKAGE__->register_method({
     subclass => "PVE::API2::Hardware::PCI",
     path => 'pci',
+});
+
+__PACKAGE__->register_method({
+    subclass => "PVE::API2::Hardware::Sensors",
+    path => 'sensors',
 });
 
 __PACKAGE__->register_method({
@@ -47,7 +53,7 @@ __PACKAGE__->register_method({
         my ($param) = @_;
 
         my $res = [
-            { type => 'pci' }, { type => 'usb' },
+            { type => 'pci' }, { type => 'sensors' }, { type => 'usb' },
         ];
 
         return $res;

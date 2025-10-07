@@ -2,6 +2,7 @@ include ../../../defines.mk
 
 PERLSOURCE=			\
 	PCI.pm			\
+	Sensors.pm	\
 	USB.pm			\
 
 all:
